@@ -3,6 +3,7 @@ local curl = require("plenary.curl")
 local json = require("copilot_chat.util.json")
 local log = require("plenary.log")
 local markdown = require("copilot_chat.markdown")
+local misc = require("copilot_chat.util.misc")
 
 ---@class CopilotChat
 ---@field copilot Copilot Copilot
@@ -24,9 +25,10 @@ function CopilotChat:new(copilot)
     url = "https://api.githubcopilot.com/",
     endpoint = "chat/completions",
     headers = {
-      ["Editor-Version"] = consts.EDITOR_VERSION,
+      ["Editor-Version"] = misc.editor_version(),
       ["Editor-Plugin-Version"] = consts.EDITOR_PLUGIN_VERSION,
       ["User-Agent"] = consts.USER_AGENT,
+      ["Copilot-Integration-Id"] = consts.COPILOT_INTEGRATION_ID,
       ["Openai-Organization"] = consts.OPENAI_ORGANIZATION,
       ["Openai-Intent"] = consts.OPENAI_INTENT,
       ["Content-Type"] = "application/json",

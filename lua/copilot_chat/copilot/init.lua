@@ -2,6 +2,7 @@ local consts = require("copilot_chat.copilot.consts")
 local curl = require("plenary.curl")
 local file = require("copilot_chat.util.file")
 local json = require("copilot_chat.util.json")
+local misc = require("copilot_chat.util.misc")
 
 ---@class Copilot
 ---@field config_paths table Github Copilot config possible paths
@@ -25,7 +26,7 @@ function Copilot:new()
     hosts_file = "hosts.json",
     api_key_file = "api-key.json",
     api_key_headers = {
-      ["Editor-Version"] = consts.EDITOR_VERSION,
+      ["Editor-Version"] = misc.editor_version(),
       ["Editor-Plugin-Version"] = consts.EDITOR_PLUGIN_VERSION,
       ["User-Agent"] = consts.USER_AGENT,
     },
