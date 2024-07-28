@@ -17,11 +17,13 @@ A Copilot plugin, either `copilot.lua` or `copilot.vim`, needs to be authenticat
 
 ```lua
 return {
-  {
-    "somnam/copilot-chat.lua",
-    dependencies = {
-      { "nvim-lua/plenary.nvim" },
-    }
+  "somnam/copilot-chat.lua",
+  cmd = "CC",
+  cond = function()
+    return vim.fn.executable("curl") == 1
+  end,
+  dependencies = {
+    { "nvim-lua/plenary.nvim" },
   },
 }
 ```
