@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if test $# -eq 0 ; then
+	nvim --headless --noplugin -u tests/init.lua -c "PlenaryBustedDirectory tests/ {minimal_init = 'tests/init.lua', timeout = 5000}"
+else
+    for file in "$@" ; do
+        nvim --headless --noplugin -u tests/init.lua -c "PlenaryBustedFile $file"
+    done
+fi
